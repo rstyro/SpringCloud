@@ -1,0 +1,15 @@
+security:
+  basic:
+    enabled: true
+  user:
+    name: rstyro
+    password: rstyropwd
+
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://rstyro:rstyropwd@localhost:8761/eureka

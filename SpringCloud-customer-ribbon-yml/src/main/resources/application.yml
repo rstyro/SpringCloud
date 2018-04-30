@@ -1,0 +1,17 @@
+server:
+  port: 8902
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://rstyro:rstyropwd@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: customer-ribbon
+
+
+producer:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
