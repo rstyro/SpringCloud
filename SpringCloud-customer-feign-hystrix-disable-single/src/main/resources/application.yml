@@ -1,0 +1,23 @@
+server:
+  port: 8904
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://rstyro:rstyropwd@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: customer-feign-default
+   
+
+logging:
+  level:
+    top.lrshuai.cloud.springcloud.feign.FeignClientService: DEBUG
+    
+# 不知道feign 默认是不是关闭hystrix,如果不开启，则hystrix 无效
+feign.hystrix.enabled: true 
+
+
+    

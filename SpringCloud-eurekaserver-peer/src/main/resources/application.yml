@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: Eureka-peer
+    # 如果spring.profiles.active没有指定值,那么只会使用没有指定spring.profiles文件的值,
+    # 也就是只会加载通用的配置，下面启动的是peer3 的配置
+  profiles:
+    active: peer3
+# (---)来作为分隔符    spring:profiles:   后面指定的是一个配置环境的名字，比如，测试、开发、生产，需要不同的配置就可以这样配
+---
+server:
+  port: 8761
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:8762/eureka/,http://peer3:8763/eureka/
+
+---
+server:
+  port: 8762
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8761/eureka/,http://peer3:8763/eureka/
+---
+server:
+  port: 8763
+spring:
+  profiles: peer3
+eureka:
+  instance:
+    hostname: peer3
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:8762/eureka/,http://peer1:8761/eureka/
