@@ -1,0 +1,9 @@
+server:
+  port: 8980
+eureka:
+  client:
+    service-url:
+      defaultZone: http://rstyro:rstyropwd@localhost:8761/eureka
+spring:
+  application:
+    name: springcloud-gateway-zuul   

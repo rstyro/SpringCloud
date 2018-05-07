@@ -1,0 +1,16 @@
+server:
+  port: 8600
+eureka:
+  client:
+    service-url:
+      defaultZone: http://rstyro:rstyropwd@localhost:8761/eureka
+
+spring:
+  application:
+    name: file-upload
+  http:
+    multipart:
+      max-file-size: 2000MB     #默认1M
+      max-request-size: 2000MB  #默认10m
+      
+      

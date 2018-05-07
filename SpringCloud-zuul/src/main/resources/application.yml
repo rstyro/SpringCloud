@@ -1,0 +1,151 @@
+server:
+  port: 8980
+eureka:
+  client:
+    service-url:
+      defaultZone: http://rstyro:rstyropwd@localhost:8761/eureka
+spring:
+  application:
+    name: springcloud-gateway-zuul   
+  profiles:
+    active: zuul_demo12
+# 例子1，zuul 默认是对所有 dureka 服务 进行反向代理
+---  
+spring:
+  profiles: zuul_demo1
+
+
+# 例子2，配置服务别名
+---  
+spring:
+  profiles: zuul_demo2
+# routes 下的就是配置别名，：格式： 服务名称(service ID): /别名/**,不配的话用默认的服务名称
+zuul:
+  routes:
+    producer: /pro/**
+    customer-ribbon: /customer/**
+    
+# 例子3，`ignoredServices: * `--不反向代理，*代表所有服务，只反向代理 routes 下面配置的服务，如下例子是只代理 customer-ribbon 服务
+---
+spring:
+  profiles: zuul_demo3
+zuul:
+  ignoredServices: '*'
+  routes:
+    customer-ribbon: /customer/**
+ 
+# 例子4: ignoredServices:不反向代理指定的服务(多个用逗号隔开)，但是如果routes 下面配置了，可以请求配置后的服务别名
+---
+spring:
+  profiles: zuul_demo4
+zuul:
+  ignoredServices: producer,customer-ribbon
+  routes:
+    customer-ribbon: /customer/**
+
+# 例子5,更细粒度的配置，serviceTestName 是随便取的
+---
+spring:
+  profiles: zuul_demo5
+zuul:
+  routes:   
+    serviceTestName:
+        path: /pro-serviceid/**
+        serviceId: producer
+        
+# 例子6,可以把serviceId 换成url
+---
+spring:
+  profiles: zuul_demo6
+zuul:
+  routes:   
+    serviceTestName:
+        path: /pro-url/**
+        url: http://192.168.1.101:7900/
+    
+# 例子7,配置负载均衡
+---
+spring:
+  profiles: zuul_demo7
+zuul:
+  routes:   
+    serviceTestName:
+        path: /pro/**
+        serviceId: producer
+ribbon:
+  eureka:
+    enabled: false
+
+producer:
+  ribbon:
+    listOfServers: http://192.168.1.101:7900/,http://192.168.1.101:7901
+
+# 例子8,访问的时候加前缀 /api, 比如：http://localhost:8980/api/producer/item/1
+---
+spring:
+  profiles: zuul_demo8
+zuul:
+  prefix: /api
+
+# 例子9.如下配置，如果要访问 http://localhost:7900/item/1 的服务，，应为: http://localhost:8980/item/producer/1
+# 全局配置
+---
+spring:
+  profiles: zuul_demo9
+zuul:
+  prefix: /item
+  stripPrefix: false
+logging:
+  level:
+    com.netflix: debug
+ 
+# 例子10
+# 局部配置   
+---
+spring:
+  profiles: zuul_demo10
+zuul:
+  routes:
+    producer:
+      path: /item/**
+      stripPrefix: false
+#  prefix: /item
+#  stripPrefix: false
+logging:
+  level:
+    com.netflix: debug
+
+# 例子11    
+# Strangulation Patterns and Local Forwards,绞杀者模式与本地转发
+# forward: 后面接的是本地的转发地址
+---
+spring:
+  profiles: zuul_demo11
+zuul:
+  routes:
+    producer:
+      path: /item/**
+      url: forward:/item
+    customer:
+      path: /provider/**
+      url: http://localhost:7900/item
+    legacy:
+      path: /**
+      url: http://localhost:7900
+logging:
+  level:
+    com.netflix: debug
+
+# 例子12
+# 上传，下面是配置超时时间，通过zuul 代理请求时在服务地址前缀加/zuul ,即可跳过spring 限制上传的大小。比如下面的地址
+#  http://192.168.1.101:8980/zuul/file-upload/upload
+# 正常是这样子的:http://192.168.1.101:8980/file-upload/upload
+---
+spring:
+  profiles: zuul_demo12
+  
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 600000
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 600000
+  

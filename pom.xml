@@ -10,12 +10,21 @@
 
 	<modules>
 		<module>SpringCloud-eurekaserver</module>
+		<module>SpringCloud-eurekaserver-peer</module>
 		<module>SpringCloud-customer</module>
 		<module>SpringCloud-customer-ribbon</module>
 		<module>SpringCloud-customer-ribbon-yml</module>
+		<module>SpringCloud-customer-ribbon-hystrix</module>
+		<module>SpringCloud-customer-ribbon-hystrix-dashboard</module>
 		<module>SpringCloud-customer-feign</module>
 		<module>SpringCloud-customer-feign-default</module>
+		<module>SpringCloud-customer-feign-hystrix</module>
+		<module>SpringCloud-customer-feign-hystrix-disable-single</module>
+		<module>SpringCloud-zuul</module>
+		<module>SpringCloud-zuul-fallback</module>
+		<module>SpringCloud-zuul-filter</module>
 		<module>SpringCloud-producer</module>
+		<module>SpringCloud-file-upload</module>
 	</modules>
 	
 	<properties>
