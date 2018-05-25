@@ -12,9 +12,9 @@ import org.springframework.web.client.RestTemplate;
 import top.lrshuai.cloud.config.RuleConfig;
 
 @Configuration
+@RibbonClient(name="producer2",configuration=RuleConfig.class)
 @SpringBootApplication
 @EnableEurekaClient
-@RibbonClient(name="producer",configuration=RuleConfig.class)
 public class CustomerRibbonApplication {
 	
     public static void main( String[] args ){

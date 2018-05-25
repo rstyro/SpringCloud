@@ -19,8 +19,16 @@ public class TestController {
 	
 	@GetMapping("/provider/{id}")
 	public Object test(@PathVariable("id") String id) {
-		ServiceInstance serverInstance = loadBalancerClient.choose("producer");
-		System.out.println("===="+serverInstance.getHost()+":"+serverInstance.getPort());
-		return restTemplate.getForObject("http://producer/item/"+id,Object.class);
+		Object obj = restTemplate.getForObject("http://producer/item/"+id,Object.class);
+		System.out.println("obj="+obj.toString());
+		return obj;
+	}
+	
+	@GetMapping("/test")
+	public Object test2() {
+		ServiceInstance serverInstance = loadBalancerClient.choose("producer2");
+		String result = "===="+serverInstance.getHost()+":"+serverInstance.getPort();
+		System.out.println(result);
+		return result;
 	}
 }

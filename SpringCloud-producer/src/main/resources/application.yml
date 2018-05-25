@@ -5,10 +5,35 @@ eureka:
   instance:
     prefer-ip-address: true
 spring:
+  profiles:
+    active: demo2
+---
+spring:
+  profiles: demo1 
   application:
-    name: producer
-    
+    name: producer   
+server:
+  port: 7900
+  
+---
+spring:
+  profiles: demo2  
+  application:
+    name: producer  
 server:
   port: 7901
- 
+---
+spring:
+  profiles: demo3  
+  application:
+    name: producer2  
+server:
+  port: 7904
+---
+spring:
+  profiles: demo4  
+  application:
+    name: producer2  
+server:
+  port: 7905
     
