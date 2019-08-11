@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import top.lrshuai.cloud.config.FeignConfig2;
 
 
-@FeignClient(name="test",url="http://localhost:7901/",configuration=FeignConfig2.class,fallback=MyHystrixFallback2.class)
+@FeignClient(name = "test", url = "http://localhost:7901/", configuration = FeignConfig2.class, fallback = MyHystrixFallback2.class)
 public interface FeignClientService2 {
 
-	@RequestMapping(value="/{serviceName}",method=RequestMethod.GET)
-	public Object serverInfo(@PathVariable("serviceName") String serviceName);
-	
+    @RequestMapping(value = "/{serviceName}", method = RequestMethod.GET)
+    public Object serverInfo(@PathVariable("serviceName") String serviceName);
+
 }

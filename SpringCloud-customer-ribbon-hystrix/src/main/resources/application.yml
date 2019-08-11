@@ -7,9 +7,9 @@ eureka:
 spring:
   application:
     name: customer-ribbon-hystrix
-    
+
 server:
   port: 8901
-  
+
 # 第一次请求报超时异常的解决方案：
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000

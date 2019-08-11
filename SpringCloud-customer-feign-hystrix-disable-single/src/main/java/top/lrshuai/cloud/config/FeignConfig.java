@@ -8,18 +8,19 @@ import feign.Logger;
 
 @Configuration
 public class FeignConfig {
-	@Bean
-	public Contract feignContract() {
-		return new feign.Contract.Default();
-	}
-	
+    @Bean
+    public Contract feignContract() {
+        return new feign.Contract.Default();
+    }
 
-	/**
-	 * 加日志的
-	 * http://cloud.spring.io/spring-cloud-static/Dalston.SR5/single/spring-cloud.html#_feign_logging
-	 * @return
-	 */
-	@Bean
+
+    /**
+     * 加日志的
+     * http://cloud.spring.io/spring-cloud-static/Dalston.SR5/single/spring-cloud.html#_feign_logging
+     *
+     * @return
+     */
+    @Bean
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
     }

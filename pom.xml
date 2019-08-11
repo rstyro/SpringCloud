@@ -25,8 +25,10 @@
 		<module>SpringCloud-zuul-filter</module>
 		<module>SpringCloud-producer</module>
 		<module>SpringCloud-file-upload</module>
+		<module>SpringCloud-Config-Server</module>
+		<module>SpringCloud-Config-Client</module>
 	</modules>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -39,7 +41,7 @@
 		<version>1.5.12.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	
+
 	<dependencyManagement>
 	    <dependencies>
         <dependency>
@@ -60,4 +62,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

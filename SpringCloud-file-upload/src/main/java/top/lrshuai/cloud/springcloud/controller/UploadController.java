@@ -11,13 +11,13 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 public class UploadController {
 
-	@PostMapping("/upload")
-	public Object uploadFile(@RequestParam(value="file",required=true)MultipartFile file) throws IOException {
-		if (file.isEmpty()) {
+    @PostMapping("/upload")
+    public Object uploadFile(@RequestParam(value = "file", required = true) MultipartFile file) throws IOException {
+        if (file.isEmpty()) {
             return null;
         }
-		String filePath  = "E:\\"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
-		file.transferTo(new File(filePath));
-		return filePath;
-	}
+        String filePath = "E:\\" + System.currentTimeMillis() + "_" + file.getOriginalFilename();
+        file.transferTo(new File(filePath));
+        return filePath;
+    }
 }

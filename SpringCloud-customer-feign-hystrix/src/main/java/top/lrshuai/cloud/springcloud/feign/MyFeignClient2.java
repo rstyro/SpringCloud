@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * fallbackFactory 可以说时fallback 的增加版
- * @author rstyro
  *
+ * @author rstyro
  */
-@FeignClient(name="producer",fallbackFactory=MyHystrixFallbackFactory.class)
+@FeignClient(name = "producer", fallbackFactory = MyHystrixFallbackFactory.class)
 public interface MyFeignClient2 {
 
-	@RequestMapping(value="/item/{id}",method=RequestMethod.GET)
-	public Object search(@PathVariable("id") String id);
+    @RequestMapping(value = "/item/{id}", method = RequestMethod.GET)
+    public Object search(@PathVariable("id") String id);
 }

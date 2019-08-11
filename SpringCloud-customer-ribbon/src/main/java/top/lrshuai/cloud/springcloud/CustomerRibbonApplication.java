@@ -12,18 +12,18 @@ import org.springframework.web.client.RestTemplate;
 import top.lrshuai.cloud.config.RuleConfig;
 
 @Configuration
-@RibbonClient(name="producer2",configuration=RuleConfig.class)
+@RibbonClient(name = "producer2", configuration = RuleConfig.class)
 @SpringBootApplication
 @EnableEurekaClient
 public class CustomerRibbonApplication {
-	
-    public static void main( String[] args ){
-      SpringApplication.run(CustomerRibbonApplication.class, args);
+
+    public static void main(String[] args) {
+        SpringApplication.run(CustomerRibbonApplication.class, args);
     }
-    
+
     @Bean
     @LoadBalanced
     public RestTemplate restTemlate() {
-    	return new RestTemplate();
+        return new RestTemplate();
     }
 }

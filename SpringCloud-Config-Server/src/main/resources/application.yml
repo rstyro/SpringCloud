@@ -1,0 +1,26 @@
+server:
+  port: 8901
+
+spring:
+  application:
+    name: ConfigServer
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/rstyro/SpringCloud-Config.git
+
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: rstyro
+    password: rstyropwd
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://rstyro:rstyropwd@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true

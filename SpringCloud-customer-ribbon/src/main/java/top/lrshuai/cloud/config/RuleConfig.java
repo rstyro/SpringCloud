@@ -9,9 +9,9 @@ import com.netflix.loadbalancer.RandomRule;
 
 @Configurable
 public class RuleConfig {
-	@Bean
-	public IRule ribbonRule(IClientConfig config) {
-		return new RandomRule();
-	}
-	
+    @Bean
+    public IRule ribbonRule(IClientConfig config) {
+        return new RandomRule();
+    }
+
 }

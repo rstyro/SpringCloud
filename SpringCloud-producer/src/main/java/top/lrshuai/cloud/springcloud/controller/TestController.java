@@ -19,37 +19,37 @@ import top.lrshuai.cloud.springcloud.entity.Item;
 
 @RestController
 public class TestController {
-	
-	@Autowired
-	private EurekaClient eurekaClient;
-	
-	
-	@Autowired
-	private DiscoveryClient discoveryClient;
 
-	@GetMapping("/item/{id}")
-	public Object test(@PathVariable("id")String id,HttpServletRequest request) {
-		int port = request.getServerPort();
-		System.out.println("item---id,port:"+port);
-		return new Item(id,port+"");
-	}
-	
-	@PostMapping("/add")
-	public Object test(@RequestBody Item item) {
-		return item;
-	}
-	
+    @Autowired
+    private EurekaClient eurekaClient;
 
-	@GetMapping("/vipAddress")
-	public Object vipAddress() {
-		InstanceInfo info = eurekaClient.getNextServerFromEureka("producer", false);
-		return info.getHomePageUrl();
-	}
-	
-	@SuppressWarnings("deprecation")
-	@GetMapping("/service/info")
-	public Object info() {
-		ServiceInstance instance= discoveryClient.getLocalServiceInstance();
-		return instance;
-	}
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @GetMapping("/item/{id}")
+    public Object test(@PathVariable("id") String id, HttpServletRequest request) {
+        int port = request.getServerPort();
+        System.out.println("item---id,port:" + port);
+        return new Item(id, port + "");
+    }
+
+    @PostMapping("/add")
+    public Object test(@RequestBody Item item) {
+        return item;
+    }
+
+
+    @GetMapping("/vipAddress")
+    public Object vipAddress() {
+        InstanceInfo info = eurekaClient.getNextServerFromEureka("producer", false);
+        return info.getHomePageUrl();
+    }
+
+    @SuppressWarnings("deprecation")
+    @GetMapping("/service/info")
+    public Object info() {
+        ServiceInstance instance = discoveryClient.getLocalServiceInstance();
+        return instance;
+    }
 }

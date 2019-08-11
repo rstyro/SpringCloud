@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-	@GetMapping("/item/{info}")
-	public Object test(@PathVariable("info") String info) {
-		return "zuul+"+info;
-	}
+    @GetMapping("/item/{info}")
+    public Object test(@PathVariable("info") String info) {
+        return "zuul+" + info;
+    }
 }

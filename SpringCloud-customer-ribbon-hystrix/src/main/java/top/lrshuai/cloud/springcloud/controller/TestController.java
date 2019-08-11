@@ -13,27 +13,28 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 @RestController
 public class TestController {
 
-	@Autowired
-	private RestTemplate restTemplate;
-	
-	@Autowired
-	private LoadBalancerClient loadBalancerClient;
-	
-	@GetMapping("/provider/{id}")
-	@HystrixCommand(fallbackMethod="testFallback")
-	public Object test(@PathVariable("id") String id) {
-		ServiceInstance serverInstance = loadBalancerClient.choose("producer");
-		System.out.println("===="+serverInstance.getHost()+":"+serverInstance.getPort());
-		return restTemplate.getForObject("http://producer/item/"+id,Object.class);
-	}
-	
-	/**
-	 * 请求失败时，调用此返回的方法
-	 * @param id
-	 * @return
-	 */
-	public Object testFallback(String id) {
-		
-		return "请求失败时，返回的数据";
-	}
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
+    @GetMapping("/provider/{id}")
+    @HystrixCommand(fallbackMethod = "testFallback")
+    public Object test(@PathVariable("id") String id) {
+        ServiceInstance serverInstance = loadBalancerClient.choose("producer");
+        System.out.println("====" + serverInstance.getHost() + ":" + serverInstance.getPort());
+        return restTemplate.getForObject("http://producer/item/" + id, Object.class);
+    }
+
+    /**
+     * 请求失败时，调用此返回的方法
+     *
+     * @param id
+     * @return
+     */
+    public Object testFallback(String id) {
+
+        return "请求失败时，返回的数据";
+    }
 }

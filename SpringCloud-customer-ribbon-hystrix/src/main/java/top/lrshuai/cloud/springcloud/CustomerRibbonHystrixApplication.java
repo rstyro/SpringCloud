@@ -12,14 +12,14 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 @EnableCircuitBreaker
 public class CustomerRibbonHystrixApplication {
-	
-    public static void main( String[] args ){
-      SpringApplication.run(CustomerRibbonHystrixApplication.class, args);
+
+    public static void main(String[] args) {
+        SpringApplication.run(CustomerRibbonHystrixApplication.class, args);
     }
-    
+
     @Bean
     @LoadBalanced
     public RestTemplate restTemlate() {
-    	return new RestTemplate();
+        return new RestTemplate();
     }
 }

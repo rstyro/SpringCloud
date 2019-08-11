@@ -12,9 +12,9 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 @EnableFeignClients
 @SpringBootApplication
 public class CustomerFeignOfDefaultApplication {
-	
-    public static void main( String[] args ){
-      SpringApplication.run(CustomerFeignOfDefaultApplication.class, args);
+
+    public static void main(String[] args) {
+        SpringApplication.run(CustomerFeignOfDefaultApplication.class, args);
     }
-    
+
 }

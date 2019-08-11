@@ -10,13 +10,13 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableEurekaClient
 public class CustomerApplication {
-	
-    public static void main( String[] args ){
-      SpringApplication.run(CustomerApplication.class, args);
+
+    public static void main(String[] args) {
+        SpringApplication.run(CustomerApplication.class, args);
     }
-    
+
     @Bean
     public RestTemplate restTemlate() {
-    	return new RestTemplate();
+        return new RestTemplate();
     }
 }

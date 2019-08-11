@@ -11,16 +11,16 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class TestController {
 
-	@Autowired
-	private RestTemplate restTemplate;
-	
-	@Autowired
-	private LoadBalancerClient loadBalancerClient;
-	
-	@GetMapping("/provider/{id}")
-	public Object test(@PathVariable("id") String id) {
-		ServiceInstance serverInstance = loadBalancerClient.choose("producer");
-		System.out.println("===="+serverInstance.getHost()+":"+serverInstance.getPort());
-		return restTemplate.getForObject("http://producer/item/"+id,Object.class);
-	}
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
+    @GetMapping("/provider/{id}")
+    public Object test(@PathVariable("id") String id) {
+        ServiceInstance serverInstance = loadBalancerClient.choose("producer");
+        System.out.println("====" + serverInstance.getHost() + ":" + serverInstance.getPort());
+        return restTemplate.getForObject("http://producer/item/" + id, Object.class);
+    }
 }

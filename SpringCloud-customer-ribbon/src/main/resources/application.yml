@@ -7,7 +7,7 @@ eureka:
 spring:
   application:
     name: customer-ribbon
-    
+
 server:
   port: 8901
     

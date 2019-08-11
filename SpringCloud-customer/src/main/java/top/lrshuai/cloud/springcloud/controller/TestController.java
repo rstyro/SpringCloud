@@ -10,14 +10,14 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class TestController {
 
-	@Autowired
-	private RestTemplate restTemplate;
-	
-	 @Value("${user.userServicePath}")
-	 private String userServicePath;
-	
-	@GetMapping("/provider/{id}")
-	public Object test(@PathVariable("id") String id) {
-		return restTemplate.getForObject(userServicePath+id,Object.class);
-	}
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Value("${user.userServicePath}")
+    private String userServicePath;
+
+    @GetMapping("/provider/{id}")
+    public Object test(@PathVariable("id") String id) {
+        return restTemplate.getForObject(userServicePath + id, Object.class);
+    }
 }

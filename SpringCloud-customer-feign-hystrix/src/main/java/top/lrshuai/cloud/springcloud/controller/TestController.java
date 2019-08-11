@@ -10,20 +10,20 @@ import top.lrshuai.cloud.springcloud.feign.MyFeignClient2;
 
 @RestController
 public class TestController {
-	
-	@Autowired
-	private MyFeignClient feignClientService;
-	
-	@Autowired
-	private MyFeignClient2 myfeignClent2;
-	
-	@GetMapping("/provider/{id}")
-	public Object test(@PathVariable String id) {
-		return feignClientService.detai(id);
-	}
-	
-	@GetMapping("/search/{id}")
-	public Object search(@PathVariable String id) {
-		return myfeignClent2.search(id);
-	}
+
+    @Autowired
+    private MyFeignClient feignClientService;
+
+    @Autowired
+    private MyFeignClient2 myfeignClent2;
+
+    @GetMapping("/provider/{id}")
+    public Object test(@PathVariable String id) {
+        return feignClientService.detai(id);
+    }
+
+    @GetMapping("/search/{id}")
+    public Object search(@PathVariable String id) {
+        return myfeignClent2.search(id);
+    }
 }

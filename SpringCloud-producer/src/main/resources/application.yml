@@ -3,37 +3,44 @@ eureka:
     serviceUrl:
       defaultZone: http://rstyro:rstyropwd@localhost:8761/eureka
   instance:
+    # 访问路径显示ip地址
     prefer-ip-address: true
+    # 自定义名字
+    instance-id: producer:${server.port}
 spring:
   profiles:
-    active: demo2
+    active: demo1
+
+# 可以自定义配置一些信息
+info:
+  name: producer
 ---
 spring:
-  profiles: demo1 
+  profiles: demo1
   application:
-    name: producer   
+    name: producer
 server:
   port: 7900
-  
+
 ---
 spring:
-  profiles: demo2  
+  profiles: demo2
   application:
-    name: producer  
+    name: producer
 server:
   port: 7901
 ---
 spring:
-  profiles: demo3  
+  profiles: demo3
   application:
-    name: producer2  
+    name: producer2
 server:
   port: 7904
 ---
 spring:
-  profiles: demo4  
+  profiles: demo4
   application:
-    name: producer2  
+    name: producer2
 server:
   port: 7905
     

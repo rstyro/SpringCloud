@@ -6,17 +6,17 @@ eureka:
       defaultZone: http://rstyro:rstyropwd@localhost:8761/eureka
 spring:
   application:
-    name: springcloud-gateway-zuul   
+    name: springcloud-gateway-zuul
   profiles:
     active: zuul_demo12
 # 例子1，zuul 默认是对所有 dureka 服务 进行反向代理
----  
+---
 spring:
   profiles: zuul_demo1
 
 
 # 例子2，配置服务别名
----  
+---
 spring:
   profiles: zuul_demo2
 # routes 下的就是配置别名，：格式： 服务名称(service ID): /别名/**,不配的话用默认的服务名称
@@ -24,7 +24,7 @@ zuul:
   routes:
     producer: /pro/**
     customer-ribbon: /customer/**
-    
+
 # 例子3，`ignoredServices: * `--不反向代理，*代表所有服务，只反向代理 routes 下面配置的服务，如下例子是只代理 customer-ribbon 服务
 ---
 spring:
@@ -33,7 +33,7 @@ zuul:
   ignoredServices: '*'
   routes:
     customer-ribbon: /customer/**
- 
+
 # 例子4: ignoredServices:不反向代理指定的服务(多个用逗号隔开)，但是如果routes 下面配置了，可以请求配置后的服务别名
 ---
 spring:
@@ -48,30 +48,30 @@ zuul:
 spring:
   profiles: zuul_demo5
 zuul:
-  routes:   
+  routes:
     serviceTestName:
-        path: /pro-serviceid/**
-        serviceId: producer
-        
+      path: /pro-serviceid/**
+      serviceId: producer
+
 # 例子6,可以把serviceId 换成url
 ---
 spring:
   profiles: zuul_demo6
 zuul:
-  routes:   
+  routes:
     serviceTestName:
-        path: /pro-url/**
-        url: http://192.168.1.101:7900/
-    
+      path: /pro-url/**
+      url: http://192.168.1.101:7900/
+
 # 例子7,配置负载均衡
 ---
 spring:
   profiles: zuul_demo7
 zuul:
-  routes:   
+  routes:
     serviceTestName:
-        path: /pro/**
-        serviceId: producer
+      path: /pro/**
+      serviceId: producer
 ribbon:
   eureka:
     enabled: false
@@ -98,7 +98,7 @@ zuul:
 logging:
   level:
     com.netflix: debug
- 
+
 # 例子10
 # 局部配置   
 ---
@@ -143,7 +143,7 @@ logging:
 ---
 spring:
   profiles: zuul_demo12
-  
+
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 600000
 ribbon:
   ConnectTimeout: 5000

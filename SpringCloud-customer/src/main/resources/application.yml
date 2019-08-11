@@ -7,10 +7,10 @@ eureka:
 spring:
   application:
     name: customer
-    
+
 server:
   port: 7901
- 
+
 user:
   userServicePath: http://localhost:7900/item/
     

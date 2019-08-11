@@ -11,13 +11,13 @@ import top.lrshuai.cloud.springcloud.filter.MyPreZuulFileter;
 @EnableZuulProxy
 public class SpringcloudZuulFilterApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringcloudZuulFilterApplication.class, args);
-	}
-	
-	@Bean
-	public MyPreZuulFileter myPreZuulFileter() {
-		return new MyPreZuulFileter();
-	}
-	
+    public static void main(String[] args) {
+        SpringApplication.run(SpringcloudZuulFilterApplication.class, args);
+    }
+
+    @Bean
+    public MyPreZuulFileter myPreZuulFileter() {
+        return new MyPreZuulFileter();
+    }
+
 }

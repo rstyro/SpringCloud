@@ -11,24 +11,24 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class TestController {
 
-	@Autowired
-	private RestTemplate restTemplate;
-	
-	@Autowired
-	private LoadBalancerClient loadBalancerClient;
-	
-	@GetMapping("/provider/{id}")
-	public Object test(@PathVariable("id") String id) {
-		Object obj = restTemplate.getForObject("http://producer/item/"+id,Object.class);
-		System.out.println("obj="+obj.toString());
-		return obj;
-	}
-	
-	@GetMapping("/test")
-	public Object test2() {
-		ServiceInstance serverInstance = loadBalancerClient.choose("producer2");
-		String result = "===="+serverInstance.getHost()+":"+serverInstance.getPort();
-		System.out.println(result);
-		return result;
-	}
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
+    @GetMapping("/provider/{id}")
+    public Object test(@PathVariable("id") String id) {
+        Object obj = restTemplate.getForObject("http://producer/item/" + id, Object.class);
+        System.out.println("obj=" + obj.toString());
+        return obj;
+    }
+
+    @GetMapping("/test")
+    public Object test2() {
+        ServiceInstance serverInstance = loadBalancerClient.choose("producer2");
+        String result = "====" + serverInstance.getHost() + ":" + serverInstance.getPort();
+        System.out.println(result);
+        return result;
+    }
 }

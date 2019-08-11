@@ -1,6 +1,6 @@
 server:
   port: 8901
-  
+
 eureka:
   client:
     serviceUrl:
@@ -10,6 +10,6 @@ eureka:
 spring:
   application:
     name: customer-feign-hystrix
-    
+
 # 不知道feign 默认是不是关闭hystrix,如果不开启，则hystrix 无效
 feign.hystrix.enabled: true

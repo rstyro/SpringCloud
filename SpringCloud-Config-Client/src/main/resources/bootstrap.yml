@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8901
+      profile: dev  # 本次访问的配置项
+      label: master
+      username: rstyro
+      password: rstyropwd
+  application:
+    name: springcloud-config-client #需要从Github上读取的资源名称，没有yml后缀名

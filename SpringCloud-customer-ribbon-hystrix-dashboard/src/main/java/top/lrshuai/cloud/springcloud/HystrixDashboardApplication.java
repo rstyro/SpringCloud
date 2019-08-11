@@ -10,14 +10,14 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrixDashboard
 @SpringBootApplication
 public class HystrixDashboardApplication {
-	
-    public static void main( String[] args ){
-      SpringApplication.run(HystrixDashboardApplication.class, args);
+
+    public static void main(String[] args) {
+        SpringApplication.run(HystrixDashboardApplication.class, args);
     }
-    
+
     @Bean
     @LoadBalanced
     public RestTemplate restTemlate() {
-    	return new RestTemplate();
+        return new RestTemplate();
     }
 }
